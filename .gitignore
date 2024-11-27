@@ -1,0 +1,33 @@
+# Ignore node_modules directory
+/angular-ecommerce/node_modules
+
+# Ignore Angular build output
+/angular-ecommerce/dist
+/angular-ecommerce/out-tsc
+
+# Ignore Angular environment files
+/angular-ecommerce/src/environments/*.ts
+
+# Ignore Angular generated files
+/angular-ecommerce/.angular
+/angular-ecommerce/.angular/cache
+
+# Ignore Spring Boot target directory
+/spring-ecommerce/target
+
+# Ignore IntelliJ IDEA project files
+/.idea
+*.iml
+
+# Ignore Maven build files
+/.mvn
+/mvnw
+/mvnw.cmd
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.swo

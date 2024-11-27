@@ -1,0 +1,16 @@
+<div class="detail-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{{ product.imageUrl }}" class="detail-img" />
+      </div>
+      <div class="col-md-6 mt-5">
+        <h1>{{ product.name }}</h1>
+        <div class="price">{{ product.unitPrice | currency : "USD" }}</div>
+        <div class="description">{{ product.description }}</div>
+        <button class="btn btn-primary btn-sm" (click)="addToCart(product)">Add to Cart</button>
+      </div>
+      <a routerLink="/products" class="back-btn">Back to products</a>
+    </div>
+  </div>
+</div>

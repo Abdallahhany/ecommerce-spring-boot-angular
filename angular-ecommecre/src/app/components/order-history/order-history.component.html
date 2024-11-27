@@ -1,0 +1,52 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div
+        *ngIf="orderHistoryList.length == 0"
+        class="col-md-12 alert alert-warning"
+        role="alert"
+      >
+        <div class="alert alert-warning">No orders in the history</div>
+      </div>
+
+      <div *ngIf="orderHistoryList.length > 0" class="row">
+        <div class="col-md-12">
+          <h1>Order History</h1>
+          <div class="card">
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Order Date</th>
+                    <th>Total Quantity</th>
+                    <th>Order Total</th>
+                    <th>Order Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let order of orderHistoryList">
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.dateCreated | date : "short" }}</td>
+                    <td>{{ order.totalQuantity }}</td>
+                    <td>{{ order.totalPrice | currency : "USD" }}</td>
+                    <td>{{ order.status }}</td>
+                    <td>
+                      <button
+                        class="btn btn-primary btn-sm"
+                        (click)="viewOrderDetails(order)"
+                      >
+                        View Details
+                      </button> 
+                    </td> 
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

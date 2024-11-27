@@ -1,0 +1,121 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div *ngIf="cartItems.length == 0" class="col-md-12">
+        <div class="alert alert-warning">No items in the cart</div>
+      </div>
+
+      <div *ngIf="cartItems.length > 0" class="row">
+        <div class="col-md-12">
+          <h1>Cart Details</h1>
+          <div class="card">
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cartItem of cartItems">
+                    <td>
+                      <img
+                        [src]="cartItem.imageUrl"
+                        alt="{{ cartItem.name }}"
+                        class="img-thumbnail"
+                        style="width: 100px"
+                      />
+                    </td>
+                    <td>{{ cartItem.name }}</td>
+                    <td>
+                      <div class="row no-gutters justify-content-center">
+                        <div class="col">
+                          <button
+                            class="btn btn-primary btn-sm"
+                            (click)="decrementQuantity(cartItem)"
+                          >
+                            <i class="fa fa-minus"></i>
+                          </button>
+                        </div>
+                        <div class="col">{{ cartItem.quantity }}</div>
+                        <div class="col">
+                          <button
+                            class="btn btn-primary btn-sm"
+                            (click)="incrementQuantity(cartItem)"
+                          >
+                            <i class="fa fa-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                    <td>{{ cartItem.unitPrice | currency : "USD" }}</td>
+                    <td>
+                      {{
+                        cartItem.quantity * cartItem.unitPrice
+                          | currency : "USD"
+                      }}
+                    </td>
+                    <td>
+                      <button
+                        class="btn btn-danger btn-sm"
+                        (click)="remove(cartItem)"
+                      >
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- display quantity, total price, shipping, and grand total -->
+              <div class="col-md-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h4>Cart Summary</h4>
+                    <hr />
+                    <div class="row">
+                      <div class="col-md-6">Total Quantity</div>
+                      <div class="col-md-6">{{ totalQuantity }}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">Total Price</div>
+                      <div class="col-md-6">
+                        {{ totalPrice | currency : "USD" }}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">Shipping</div>
+                      <div class="col-md-6">Free</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">Grand Total</div>
+                      <div class="col-md-6">
+                        {{ totalPrice | currency : "USD" }}
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row mt-3">
+                      <div class="col-md-12">
+                        <a
+                          routerLink="/checkout"
+                          class="btn btn-primary btn-block"
+                        >
+                          Proceed to Checkout
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
